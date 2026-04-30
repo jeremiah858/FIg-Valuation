@@ -22,25 +22,6 @@
 <body class="bg-slate-200 p-4 md:p-8">
 <div id="fig-valuation-tool" class="bg-slate-50 font-sans text-slate-900 w-full rounded-2xl overflow-hidden shadow-sm max-w-5xl mx-auto">
 
-  <nav class="bg-white border-b border-slate-200 px-6 py-4 z-50 print-hide">
-    <div class="max-w-5xl mx-auto flex justify-between items-center">
-      <div class="flex items-center gap-2">
-        <div class="bg-slate-900 p-2 rounded-lg text-white flex items-center justify-center">
-          <i data-lucide="trending-up" class="w-6 h-6"></i>
-        </div>
-        <div>
-          <h1 class="font-bold text-lg leading-none">McQueen Financial</h1>
-          <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Advisors | FIG Strategy</p>
-        </div>
-      </div>
-      <div class="hidden md:flex gap-6 text-sm font-medium text-slate-600">
-        <span class="text-slate-900">M&A Strategy</span>
-        <span>ALM Positioning</span>
-        <span>Valuation Services</span>
-      </div>
-    </div>
-  </nav>
-
   <main class="max-w-4xl mx-auto py-12 px-6">
     <header class="text-center mb-12 print-hide">
       <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">
@@ -50,10 +31,8 @@
         Harnessing Q1 2026 market intelligence to provide C-suite executives with real-time strategic pricing insights.
       </p>
     </header>
-
     <div class="bg-white rounded-2xl shadow-xl shadow-slate-200/60 overflow-hidden border border-slate-100">
       <div class="p-8 md:p-12">
-
         <!-- Progress Indicator -->
         <div class="flex justify-between mb-8 px-4 print-hide">
           <div class="flex flex-col items-center flex-1">
@@ -69,15 +48,12 @@
             <span id="prog-text-3" class="text-xs uppercase tracking-wider font-semibold text-slate-400">Advisory</span>
           </div>
         </div>
-
         <!-- ===== STEP 1: INPUTS ===== -->
         <div id="step-1" class="space-y-8 block">
-
           <div id="validation-error" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl flex items-center gap-3">
             <i data-lucide="alert-circle" class="w-5 h-5 flex-shrink-0"></i>
             <span id="validation-text" class="text-sm font-medium">Please verify your inputs.</span>
           </div>
-
           <!-- Core Financials -->
           <div>
             <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Core Financials</h3>
@@ -100,7 +76,6 @@
               </div>
             </div>
           </div>
-
           <!-- Quality & Risk Signals -->
           <div>
             <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Quality &amp; Risk Signals</h3>
@@ -122,25 +97,22 @@
                 <input type="number" step="0.01" id="val-nim" value="3.20" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none transition-all" />
               </div>
               <div>
-                <label class="block text-sm font-bold text-slate-700 mb-1">Tier 1 Capital Ratio (%)</label>
-                <p class="text-xs text-slate-400 mb-2">Well-capitalized threshold ≥ 10%</p>
-                <input type="number" step="0.1" id="val-tier1" value="12.0" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none transition-all" />
+                <label class="block text-sm font-bold text-slate-700 mb-1">Loan / Deposit Ratio (%)</label>
+                <p class="text-xs text-slate-400 mb-2">Total loans / total deposits. Healthy range: 70–90%</p>
+                <input type="number" step="0.1" id="val-ldr" value="80.0" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none transition-all" />
               </div>
             </div>
           </div>
-
           <div class="bg-blue-50 border border-blue-100 p-4 rounded-xl flex gap-3 items-start">
             <i data-lucide="info" class="text-blue-600 flex-shrink-0 mt-0.5 w-5 h-5"></i>
             <p class="text-sm text-blue-800 leading-relaxed">
-              <strong>Note:</strong> Estimates utilize current Q1 2026 FIG multiples. P/TBV is dynamically adjusted based on ROE. P/E flexes with efficiency ratio. NIM, Tier 1 capital, and NPL ratio each apply independent adjustment factors.
+              <strong>Note:</strong> Estimates utilize current Q1 2026 FIG multiples. P/TBV is dynamically adjusted based on ROE. P/E flexes with efficiency ratio. NIM, Loan/Deposit ratio, and NPL ratio each apply independent adjustment factors.
             </p>
           </div>
-
           <button onclick="calculateValuation()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all transform hover:scale-[1.01] active:scale-[0.99] shadow-lg">
             Calculate Estimated Strategic Value <i data-lucide="arrow-right" class="w-5 h-5"></i>
           </button>
         </div>
-
         <!-- ===== STEP 2: RESULTS ===== -->
         <div id="step-2" class="space-y-10 hidden">
           <div class="text-center">
@@ -155,7 +127,6 @@
               Based on <strong>Q1 2026</strong> deal flow analytics, dynamic multiples, and continuous operational metrics.
             </p>
           </div>
-
           <!-- Key Metrics Grid -->
           <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
             <div class="p-4 border border-slate-100 bg-slate-50 rounded-2xl">
@@ -200,14 +171,13 @@
             </div>
             <div class="p-4 border border-slate-100 bg-slate-50 rounded-2xl">
               <div class="flex items-center gap-2 mb-2 text-slate-600">
-                <i data-lucide="shield-check" class="w-4 h-4"></i>
-                <span class="text-xs font-bold uppercase tracking-wider">Capital Health</span>
+                <i data-lucide="droplets" class="w-4 h-4"></i>
+                <span class="text-xs font-bold uppercase tracking-wider">Liquidity</span>
               </div>
-              <div class="text-xl font-bold" id="result-capital">—</div>
-              <div class="text-xs text-slate-400 mt-1">Tier 1 assessment</div>
+              <div class="text-xl font-bold" id="result-liquidity">—</div>
+              <div class="text-xs text-slate-400 mt-1">Loan/Deposit assessment</div>
             </div>
           </div>
-
           <!-- Signal Panel -->
           <div class="border border-slate-100 rounded-2xl overflow-hidden">
             <div class="bg-slate-50 px-5 py-3 border-b border-slate-100">
@@ -215,7 +185,6 @@
             </div>
             <div class="divide-y divide-slate-100" id="signal-panel"></div>
           </div>
-
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 print-hide">
             <button onclick="window.print()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all">
               <i data-lucide="printer" class="w-5 h-5"></i> Print Executive Summary
@@ -224,7 +193,6 @@
               Unlock Full Report <i data-lucide="arrow-down" class="w-5 h-5"></i>
             </button>
           </div>
-
           <!-- Lead Form -->
           <div id="lead-form" class="bg-slate-900 text-white p-8 rounded-2xl shadow-2xl relative overflow-hidden print-hide">
             <div class="absolute top-0 right-0 p-4 opacity-10">
@@ -235,6 +203,7 @@
               <p class="text-slate-300 mb-8 leading-relaxed">
                 Market fluctuations and regulatory shifts mean your true value is more than a simple calculation. Secure a full advisory report covering Fair Value marks, ALM positioning, and current buyer appetite.
               </p>
+
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 <input type="text" id="req-hp" class="visually-hidden" autocomplete="off" tabindex="-1" placeholder="Leave empty">
                 <input type="text" id="req-name" placeholder="Full Name" class="bg-slate-800 border-none rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:ring-2 focus:ring-white outline-none" />
@@ -243,16 +212,14 @@
                 <input type="text" id="req-phone" placeholder="Phone Number" class="bg-slate-800 border-none rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:ring-2 focus:ring-white outline-none" />
               </div>
               <button id="submit-btn" onclick="submitRequest()" class="w-full bg-white text-slate-900 font-black py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-slate-100 transition-all shadow-xl">
-                <span>Connect with McQueen Strategy Team</span> <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                <span>Request Full Advisory Report</span> <i data-lucide="chevron-right" class="w-5 h-5"></i>
               </button>
             </div>
           </div>
-
           <button onclick="goToStep(1)" class="w-full text-slate-400 font-bold py-2 text-sm hover:text-slate-600 transition-colors print-hide">
             Modify Assumptions &amp; Recalculate
           </button>
         </div>
-
         <!-- ===== STEP 3: CONFIRMATION ===== -->
         <div id="step-3" class="text-center py-12 hidden print-hide">
           <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -283,14 +250,10 @@
             Return to Estimator
           </button>
         </div>
-
       </div>
     </div>
-
     <!-- ===== METHODOLOGY SECTION (PASSWORD PROTECTED) ===== -->
     <div class="mt-12 print-hide">
-
-      <!-- Lock prompt -->
       <div id="method-lock" class="bg-white rounded-2xl border border-slate-100 shadow-sm px-8 py-6 flex flex-col sm:flex-row items-center gap-4">
         <div class="flex items-center gap-3 flex-1">
           <div class="bg-slate-100 p-2 rounded-lg">
@@ -310,8 +273,6 @@
         </div>
         <p id="method-err" class="hidden text-xs text-red-500 w-full text-center sm:text-left sm:-mb-4">Incorrect password.</p>
       </div>
-
-      <!-- Hidden methodology content -->
       <div id="method-content" class="hidden bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
         <div class="px-8 py-6 border-b border-slate-100 flex items-center justify-between">
           <div class="flex items-center gap-3">
@@ -323,7 +284,6 @@
           </button>
         </div>
         <div class="px-8 py-6 space-y-8 text-sm text-slate-600 leading-relaxed">
-
           <div>
             <h4 class="font-bold text-slate-800 mb-2">Valuation Framework — Three-Method Blend</h4>
             <p class="mb-3">This tool blends three standard FIG valuation methodologies, weighted as follows:</p>
@@ -357,36 +317,22 @@
             </div>
             <p class="mt-3 text-slate-500 text-xs">The blended result is then multiplied by all applicable adjustment factors. A ±8% range is applied to the final weighted average to produce the high and low estimates.</p>
           </div>
-
           <div>
             <h4 class="font-bold text-slate-800 mb-2">Dynamic P/TBV Multiple</h4>
-            <p class="mb-2">Rather than using a static P/TBV multiple, this tool derives it from the institution's Return on Equity (ROE), which is the primary driver of P/TBV multiples in bank M&amp;A. The relationship is well-documented: higher ROE justifies a higher premium to book value.</p>
+            <p class="mb-2">Rather than using a static P/TBV multiple, this tool derives it from the institution's Return on Equity (ROE), which is the primary driver of P/TBV multiples in bank M&amp;A.</p>
             <div class="bg-slate-50 rounded-xl px-5 py-4 font-mono text-xs text-slate-700">
               P/TBV = 1.0 + (ROE × 5.5)<br>
               Clamped: min 0.85x, max 2.20x<br><br>
               Example: ROE of 12% → P/TBV = 1.0 + (0.12 × 5.5) = <strong>1.66x</strong>
             </div>
-            <p class="mt-2 text-xs text-slate-500">Calibrated to observed community bank deal multiples (S&amp;P Global Market Intelligence, SNL Financial, 2023–2025 transaction data).</p>
           </div>
-
           <div>
             <h4 class="font-bold text-slate-800 mb-2">Dynamic P/E Multiple</h4>
-            <p class="mb-2">The base P/E of 19.0x reflects the median community bank acquisition multiple observed in 2024–2025 transactions. It is adjusted based on the efficiency ratio — a key measure of operating leverage that buyers scrutinize closely.</p>
             <div class="bg-slate-50 rounded-xl px-5 py-4 font-mono text-xs text-slate-700">
               P/E = 19.0 + ((58 − Efficiency Ratio) / 5) × 0.5<br>
-              Clamped: min 10.0x, max 26.0x<br><br>
-              Example: Efficiency of 50% → P/E = <strong>19.8x</strong><br>
-              Example: Efficiency of 70% → P/E = <strong>17.8x</strong>
+              Clamped: min 10.0x, max 26.0x
             </div>
-            <p class="mt-2 text-xs text-slate-500">Baseline 19.0x sourced from: Mercer Capital FIG M&amp;A Transaction Database; S&amp;P Global Market Intelligence community bank deal tracker (2024–Q1 2025).</p>
           </div>
-
-          <div>
-            <h4 class="font-bold text-slate-800 mb-2">Core Deposit Premium</h4>
-            <p class="mb-2">The 7% premium applied to core deposit balances is consistent with observed Core Deposit Intangible (CDI) values in recent community bank transactions. This is a simplification; in formal appraisals the CDI is modeled using deposit decay rates, discount rates, and market funding alternatives. Industry range: 4%–10% of core deposit balances.</p>
-            <p class="text-xs text-slate-500">Reference: FDIC Supervisory Insights on CDI; FHN Financial FIG Advisory market commentary (2024).</p>
-          </div>
-
           <div>
             <h4 class="font-bold text-slate-800 mb-2">Adjustment Factors</h4>
             <div class="overflow-x-auto">
@@ -406,34 +352,36 @@
                   </tr>
                   <tr class="bg-slate-50">
                     <td class="px-4 py-2 border border-slate-200 font-semibold">Asset Size Premium</td>
-                    <td class="px-4 py-2 border border-slate-200">Log-scale vs. $250M baseline. Larger banks trade at premiums due to strategic fit.</td>
+                    <td class="px-4 py-2 border border-slate-200">Log-scale vs. $250M baseline.</td>
                     <td class="px-4 py-2 border border-slate-200 font-mono">0.95 – 1.10</td>
                   </tr>
                   <tr>
                     <td class="px-4 py-2 border border-slate-200 font-semibold">ROA Premium</td>
-                    <td class="px-4 py-2 border border-slate-200">Baseline 1.00%. ±1% per 0.10% variance from baseline.</td>
+                    <td class="px-4 py-2 border border-slate-200">Baseline 1.00%. ±1% per 0.10% variance.</td>
                     <td class="px-4 py-2 border border-slate-200 font-mono">0.90 – 1.10</td>
                   </tr>
                   <tr class="bg-slate-50">
                     <td class="px-4 py-2 border border-slate-200 font-semibold">NIM Adjustment</td>
-                    <td class="px-4 py-2 border border-slate-200">Baseline 3.20% (FDIC Q3 2024 community bank avg). ±3% per 1% NIM variance.</td>
+                    <td class="px-4 py-2 border border-slate-200">Baseline 3.20%. ±3% per 1% NIM variance.</td>
                     <td class="px-4 py-2 border border-slate-200 font-mono">0.94 – 1.06</td>
                   </tr>
                   <tr>
-                    <td class="px-4 py-2 border border-slate-200 font-semibold">Tier 1 Capital</td>
-                    <td class="px-4 py-2 border border-slate-200">≥13%: +4%. 10–13%: neutral. 8–10%: −5%. &lt;8%: −12%.</td>
-                    <td class="px-4 py-2 border border-slate-200 font-mono">0.88 – 1.04</td>
+                    <td class="px-4 py-2 border border-slate-200 font-semibold">Loan/Deposit Ratio</td>
+                    <td class="px-4 py-2 border border-slate-200">
+                      Sweet spot 70–90%: neutral (1.00). &lt;60%: −4% (idle earning assets).
+                      60–70%: −2% (under-deployed). 90–100%: −3% (funding pressure). &gt;100%: −8% (wholesale funding reliance).
+                    </td>
+                    <td class="px-4 py-2 border border-slate-200 font-mono">0.92 – 1.00</td>
                   </tr>
                   <tr class="bg-slate-50">
                     <td class="px-4 py-2 border border-slate-200 font-semibold">Efficiency Adjustment</td>
-                    <td class="px-4 py-2 border border-slate-200">Standalone multiplier in addition to P/E adjustment. Every 4% from 58% baseline adds/subtracts ~1%.</td>
+                    <td class="px-4 py-2 border border-slate-200">Standalone multiplier; every 4% from 58% baseline adds/subtracts ~1%.</td>
                     <td class="px-4 py-2 border border-slate-200 font-mono">0.92 – 1.08</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
-
           <div>
             <h4 class="font-bold text-slate-800 mb-3">Key Sources &amp; Further Reading</h4>
             <ul class="space-y-3">
@@ -441,35 +389,28 @@
                 <i data-lucide="external-link" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
                 <div>
                   <a href="https://www.fdic.gov/bank/statistical/bankstats/" target="_blank" rel="noopener" class="text-blue-700 font-semibold hover:underline">FDIC Bank Statistics (BankStats)</a>
-                  <p class="text-xs text-slate-400 mt-0.5">Quarterly data on NIM, ROA, ROE, efficiency ratios, and capital ratios for FDIC-insured institutions. Used for all peer benchmarks.</p>
+                  <p class="text-xs text-slate-400 mt-0.5">Quarterly data on NIM, ROA, ROE, efficiency ratios for FDIC-insured institutions.</p>
                 </div>
               </li>
               <li class="flex gap-3 items-start">
                 <i data-lucide="external-link" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
                 <div>
                   <a href="https://www.spglobal.com/marketintelligence/en/solutions/financial-institutions" target="_blank" rel="noopener" class="text-blue-700 font-semibold hover:underline">S&amp;P Global Market Intelligence — FIG M&amp;A Data</a>
-                  <p class="text-xs text-slate-400 mt-0.5">Source for P/TBV and P/E transaction multiples. Community bank deal comps (2023–2025). SNL Financial is the industry standard for deal screening.</p>
+                  <p class="text-xs text-slate-400 mt-0.5">Source for P/TBV and P/E transaction multiples. Community bank deal comps (2023–2025).</p>
                 </div>
               </li>
               <li class="flex gap-3 items-start">
                 <i data-lucide="external-link" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
                 <div>
                   <a href="https://mercercapital.com/financial-institutions/" target="_blank" rel="noopener" class="text-blue-700 font-semibold hover:underline">Mercer Capital — Bank Valuation &amp; FIG Advisory</a>
-                  <p class="text-xs text-slate-400 mt-0.5">Quarterly bank M&amp;A transaction reports, P/TBV by profitability decile, and core deposit intangible valuation guidance.</p>
-                </div>
-              </li>
-              <li class="flex gap-3 items-start">
-                <i data-lucide="external-link" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
-                <div>
-                  <a href="https://www.occ.gov/publications-and-resources/publications/comptrollers-handbook/index-comptrollers-handbook.html" target="_blank" rel="noopener" class="text-blue-700 font-semibold hover:underline">OCC Comptroller's Handbook — Capital Adequacy</a>
-                  <p class="text-xs text-slate-400 mt-0.5">Authoritative source for Tier 1 capital ratio thresholds. Well-capitalized = ≥10% Tier 1 ratio per Basel III / U.S. PCA framework.</p>
+                  <p class="text-xs text-slate-400 mt-0.5">Quarterly bank M&amp;A transaction reports and core deposit intangible valuation guidance.</p>
                 </div>
               </li>
               <li class="flex gap-3 items-start">
                 <i data-lucide="external-link" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
                 <div>
                   <a href="https://www.ffiec.gov/npw/FinancialReport/ReturnFinancialReport" target="_blank" rel="noopener" class="text-blue-700 font-semibold hover:underline">FFIEC — Call Report Data</a>
-                  <p class="text-xs text-slate-400 mt-0.5">Public source for peer NPL ratios, efficiency ratios, and capital data by asset size cohort.</p>
+                  <p class="text-xs text-slate-400 mt-0.5">Public source for peer NPL ratios, efficiency ratios, and loan/deposit data by asset size cohort.</p>
                 </div>
               </li>
               <li class="flex gap-3 items-start">
@@ -481,33 +422,26 @@
               </li>
             </ul>
           </div>
-
           <div class="bg-amber-50 border border-amber-100 p-4 rounded-xl flex gap-3 items-start">
             <i data-lucide="alert-triangle" class="text-amber-600 flex-shrink-0 mt-0.5 w-5 h-5"></i>
             <p class="text-sm text-amber-800 leading-relaxed">
-              <strong>Important limitation:</strong> This tool does not account for fair value marks on the loan or securities portfolio, interest rate risk in the AFS/HTM portfolios (a major post-2022 factor), franchise geography, customer concentration, pending litigation, or management depth. These are critical inputs in any formal M&amp;A process. This estimate is a directional range only.
+              <strong>Important limitation:</strong> This tool does not account for fair value marks on the loan or securities portfolio, interest rate risk in the AFS/HTM portfolios (a major post-2022 factor), franchise geography, customer concentration, pending litigation, or management depth. This estimate is a directional range only.
             </p>
           </div>
-
         </div>
       </div>
-    </div><!-- end methodology -->
-
+    </div>
     <footer class="mt-12 text-center text-slate-400 px-4 print-hide">
       <p class="text-xs uppercase font-bold tracking-widest mb-2">Confidential Strategy Tool</p>
       <p class="text-[10px] leading-relaxed max-w-2xl mx-auto">
-        Disclaimer: This tool provides a high-level strategic estimate for informational purposes only. It does not constitute a formal fairness opinion or a guaranteed valuation. All data is processed based on Q1 2026 market benchmarks and assumes standardized accounting treatments. Contact McQueen Financial Advisors for a definitive FIG valuation.
+        Disclaimer: This tool provides a high-level strategic estimate for informational purposes only. It does not constitute a formal fairness opinion or a guaranteed valuation. All data is processed based on Q1 2026 market benchmarks and assumes standardized accounting treatments.
       </p>
     </footer>
   </main>
 </div>
-
 <script>
   lucide.createIcons();
-
-  // ── CHANGE THIS PASSWORD ──────────────────────────────
   const METHOD_PASSWORD = 'mcqueen2026';
-  // ─────────────────────────────────────────────────────
 
   function unlockMethod() {
     const pw = document.getElementById('method-pw').value;
@@ -557,7 +491,7 @@
     const nplRatio     = pv('val-nplRatio');
     const effRatio     = pv('val-effRatio');
     const nim          = pv('val-nim');
-    const tier1        = pv('val-tier1');
+    const ldr          = pv('val-ldr');
 
     let errorMessage = '';
     if (assets <= 0 || tbv <= 0 || netIncome <= 0 || coreDeposits <= 0) {
@@ -566,7 +500,10 @@
       errorMessage = 'Core Deposits cannot be greater than Total Assets.';
     } else if (tbv >= assets) {
       errorMessage = 'Tangible Book Value cannot be greater than Total Assets.';
+    } else if (ldr <= 0) {
+      errorMessage = 'Please enter a valid Loan/Deposit Ratio.';
     }
+
     if (errorMessage) {
       document.getElementById('validation-text').innerText = errorMessage;
       document.getElementById('validation-error').classList.remove('hidden');
@@ -594,30 +531,50 @@
 
     // Adjustment factors
     let nplDisc  = nplRatio >= 2.0 ? 0.90 : nplRatio >= 1.0 ? 0.95 : 1.0;
+
     let sizePrem = 1.0 + (Math.log10(Math.max(assets, 10e6) / 250e6) * 0.05);
     sizePrem     = Math.max(0.95, Math.min(sizePrem, 1.10));
+
     let roaPrem  = 1.0 + ((roa - 1.00) * 0.10);
     roaPrem      = Math.max(0.90, Math.min(roaPrem, 1.10));
+
     let nimAdj   = 1.0 + ((nim - 3.20) * 0.03);
     nimAdj       = Math.max(0.94, Math.min(nimAdj, 1.06));
-    let capAdj   = tier1 >= 13 ? 1.04 : tier1 >= 10 ? 1.0 : tier1 >= 8 ? 0.95 : 0.88;
+
+    // Loan/Deposit Ratio adjustment
+    // 70–90% = sweet spot (fully deployed, not overstretched, signals healthy organic lending)
+    // <60%   = idle cash drag, buyer sees yield opportunity cost
+    // 60–70% = slightly under-deployed, minor discount
+    // 90–100% = funding pressure beginning, modest risk premium
+    // >100%  = reliant on wholesale/FHLB funding, significant risk discount
+    let ldrAdj;
+    if      (ldr < 60)        ldrAdj = 0.96;
+    else if (ldr < 70)        ldrAdj = 0.98;
+    else if (ldr <= 90)       ldrAdj = 1.00;
+    else if (ldr <= 100)      ldrAdj = 0.97;
+    else                      ldrAdj = 0.92;
+
     let effAdj   = 1.0 + ((58 - effRatio) / 100) * 0.25;
     effAdj       = Math.max(0.92, Math.min(effAdj, 1.08));
 
-    const weighted = blend * nplDisc * sizePrem * roaPrem * nimAdj * capAdj * effAdj;
+    const weighted = blend * nplDisc * sizePrem * roaPrem * nimAdj * ldrAdj * effAdj;
     const low  = weighted * 0.92;
     const high = weighted * 1.08;
 
-    const capLabel = tier1 >= 13 ? 'Strong' : tier1 >= 10 ? 'Well-Cap.' : tier1 >= 8 ? 'Adequate' : 'Under-Cap.';
+    const liqLabel = ldr < 60   ? 'Under-Deployed'
+                   : ldr < 70   ? 'Conservative'
+                   : ldr <= 90  ? 'Optimal'
+                   : ldr <= 100 ? 'Elevated'
+                   : 'Stressed';
 
-    document.getElementById('result-low').innerText     = formatCurrency(low);
-    document.getElementById('result-high').innerText    = formatCurrency(high);
-    document.getElementById('result-ptbv').innerText    = (ptbv * 100).toFixed(0) + '%';
-    document.getElementById('result-pe').innerText      = pe.toFixed(1) + 'x';
-    document.getElementById('result-roa').innerText     = roa.toFixed(2) + '%';
-    document.getElementById('result-roe').innerText     = roe.toFixed(1) + '%';
-    document.getElementById('result-equity').innerText  = equityRatio.toFixed(2) + '%';
-    document.getElementById('result-capital').innerText = capLabel;
+    document.getElementById('result-low').innerText       = formatCurrency(low);
+    document.getElementById('result-high').innerText      = formatCurrency(high);
+    document.getElementById('result-ptbv').innerText      = (ptbv * 100).toFixed(0) + '%';
+    document.getElementById('result-pe').innerText        = pe.toFixed(1) + 'x';
+    document.getElementById('result-roa').innerText       = roa.toFixed(2) + '%';
+    document.getElementById('result-roe').innerText       = roe.toFixed(1) + '%';
+    document.getElementById('result-equity').innerText    = equityRatio.toFixed(2) + '%';
+    document.getElementById('result-liquidity').innerText = liqLabel;
 
     function signalRow(label, display, badgeClass, badgeText, impactText) {
       return `<div class="flex items-center justify-between px-5 py-3 text-sm">
@@ -628,20 +585,22 @@
       </div>`;
     }
 
-    const [roaC,  roaL]  = roa >= 1.0    ? ['bg-emerald-100 text-emerald-800','Strong']    : roa >= 0.75   ? ['bg-amber-100 text-amber-800','Average']   : ['bg-red-100 text-red-800','Weak'];
-    const [roeC,  roeL]  = roe >= 12     ? ['bg-emerald-100 text-emerald-800','Strong']    : roe >= 8      ? ['bg-amber-100 text-amber-800','Average']   : ['bg-red-100 text-red-800','Weak'];
-    const [effC,  effL]  = effRatio <= 55 ? ['bg-emerald-100 text-emerald-800','Efficient'] : effRatio <= 65 ? ['bg-amber-100 text-amber-800','Average'] : ['bg-red-100 text-red-800','High Cost'];
-    const [nimC,  nimL]  = nim >= 3.5    ? ['bg-emerald-100 text-emerald-800','Strong']    : nim >= 3.0    ? ['bg-amber-100 text-amber-800','Average']   : ['bg-red-100 text-red-800','Thin'];
-    const [t1C,   t1L]   = tier1 >= 12   ? ['bg-emerald-100 text-emerald-800','Strong']    : tier1 >= 10   ? ['bg-amber-100 text-amber-800','Adequate']  : ['bg-red-100 text-red-800','At Risk'];
-    const [nplC,  nplL]  = nplRatio < 0.75 ? ['bg-emerald-100 text-emerald-800','Clean']  : nplRatio < 1.5 ? ['bg-amber-100 text-amber-800','Moderate'] : ['bg-red-100 text-red-800','Elevated'];
+    const [roaC, roaL] = roa >= 1.0      ? ['bg-emerald-100 text-emerald-800','Strong']       : roa >= 0.75    ? ['bg-amber-100 text-amber-800','Average']    : ['bg-red-100 text-red-800','Weak'];
+    const [roeC, roeL] = roe >= 12       ? ['bg-emerald-100 text-emerald-800','Strong']       : roe >= 8       ? ['bg-amber-100 text-amber-800','Average']    : ['bg-red-100 text-red-800','Weak'];
+    const [effC, effL] = effRatio <= 55  ? ['bg-emerald-100 text-emerald-800','Efficient']    : effRatio <= 65 ? ['bg-amber-100 text-amber-800','Average']    : ['bg-red-100 text-red-800','High Cost'];
+    const [nimC, nimL] = nim >= 3.5      ? ['bg-emerald-100 text-emerald-800','Strong']       : nim >= 3.0     ? ['bg-amber-100 text-amber-800','Average']    : ['bg-red-100 text-red-800','Thin'];
+    const [nplC, nplL] = nplRatio < 0.75 ? ['bg-emerald-100 text-emerald-800','Clean']       : nplRatio < 1.5 ? ['bg-amber-100 text-amber-800','Moderate']   : ['bg-red-100 text-red-800','Elevated'];
+    const [ldrC, ldrL] = (ldr >= 70 && ldr <= 90) ? ['bg-emerald-100 text-emerald-800','Optimal']
+                       : (ldr < 60 || ldr > 100)   ? ['bg-red-100 text-red-800', ldr > 100 ? 'Stressed' : 'Under-Deployed']
+                       : ['bg-amber-100 text-amber-800', ldr < 70 ? 'Conservative' : 'Elevated'];
 
     document.getElementById('signal-panel').innerHTML =
-      signalRow('ROA',                roa.toFixed(2)+'%',     roaC, roaL, 'Profitability vs. 1.00% peer avg') +
-      signalRow('ROE',                roe.toFixed(1)+'%',     roeC, roeL, 'Primary P/TBV multiple driver') +
-      signalRow('Efficiency Ratio',   effRatio.toFixed(1)+'%',effC, effL, 'Adjusts P/E & standalone multiplier') +
-      signalRow('Net Interest Margin',nim.toFixed(2)+'%',     nimC, nimL, 'vs. 3.20% FDIC community bank avg') +
-      signalRow('Tier 1 Capital',     tier1.toFixed(1)+'%',   t1C,  t1L,  'OCC well-capitalized threshold ≥10%') +
-      signalRow('NPL Ratio',          nplRatio.toFixed(2)+'%',nplC, nplL, 'Applies 0–10% credit risk discount');
+      signalRow('ROA',                  roa.toFixed(2)+'%',      roaC, roaL, 'Profitability vs. 1.00% peer avg') +
+      signalRow('ROE',                  roe.toFixed(1)+'%',      roeC, roeL, 'Primary P/TBV multiple driver') +
+      signalRow('Efficiency Ratio',     effRatio.toFixed(1)+'%', effC, effL, 'Adjusts P/E & standalone multiplier') +
+      signalRow('Net Interest Margin',  nim.toFixed(2)+'%',      nimC, nimL, 'vs. 3.20% FDIC community bank avg') +
+      signalRow('Loan / Deposit Ratio', ldr.toFixed(1)+'%',      ldrC, ldrL, 'Optimal 70–90%; >100% signals wholesale funding risk') +
+      signalRow('NPL Ratio',            nplRatio.toFixed(2)+'%', nplC, nplL, 'Applies 0–10% credit risk discount');
 
     lucide.createIcons();
     goToStep(2);
@@ -650,12 +609,10 @@
   function submitRequest() {
     const honeypot = document.getElementById('req-hp').value;
     if (honeypot !== '') { goToStep(3); return; }
-
     const name  = document.getElementById('req-name').value  || 'Not provided';
     const inst  = document.getElementById('req-inst').value  || 'Not provided';
     const email = document.getElementById('req-email').value || 'Not provided';
     const phone = document.getElementById('req-phone').value || 'Not provided';
-
     const assets       = document.getElementById('val-assets').value       || '0';
     const tbv          = document.getElementById('val-tbv').value          || '0';
     const netIncome    = document.getElementById('val-netIncome').value    || '0';
@@ -663,8 +620,7 @@
     const nplRatio     = document.getElementById('val-nplRatio').value     || '0';
     const effRatio     = document.getElementById('val-effRatio').value     || '0';
     const nim          = document.getElementById('val-nim').value          || '0';
-    const tier1        = document.getElementById('val-tier1').value        || '0';
-
+    const ldr          = document.getElementById('val-ldr').value          || '0';
     const fullMessage = `
 --- VALUATION REQUEST ---
 Institution: ${inst}
@@ -678,14 +634,12 @@ Core Deposits: $${coreDeposits}
 NPL Ratio: ${nplRatio}%
 Efficiency Ratio: ${effRatio}%
 Net Interest Margin: ${nim}%
-Tier 1 Capital Ratio: ${tier1}%
+Loan/Deposit Ratio: ${ldr}%
     `.trim();
-
     const bbNameField    = document.querySelector('#mfa-hidden-form input[name="fl-name"]');
     const bbEmailField   = document.querySelector('#mfa-hidden-form input[name="fl-email"]');
     const bbMessageField = document.querySelector('#mfa-hidden-form textarea[name="fl-message"]');
     const bbSubmitBtn    = document.querySelector('#mfa-hidden-form .fl-button');
-
     if (bbNameField && bbEmailField && bbMessageField && bbSubmitBtn) {
       bbNameField.value    = name;
       bbEmailField.value   = email;
@@ -703,7 +657,6 @@ Tier 1 Capital Ratio: ${tier1}%
     document.getElementById('step-2').classList.add('hidden');
     document.getElementById('step-3').classList.add('hidden');
     document.getElementById(`step-${step}`).classList.remove('hidden');
-
     for (let i = 1; i <= 3; i++) {
       const icon = document.getElementById(`prog-icon-${i}`);
       const text = document.getElementById(`prog-text-${i}`);
